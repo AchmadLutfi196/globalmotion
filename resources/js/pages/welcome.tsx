@@ -1,8 +1,16 @@
-import { Head, Link } from '@inertiajs/react';
-import { ReactNode } from 'react';
+import { Head, Link, router } from '@inertiajs/react';
+import { ReactNode, useState } from 'react';
 import MainLayout from '@/layouts/MainLayout';
 
 export default function Welcome() {
+  const [trackingNumber, setTrackingNumber] = useState('');
+
+  const handleTrack = () => {
+    if (trackingNumber.trim()) {
+      router.visit(`/tracking/${trackingNumber.trim()}`);
+    }
+  };
+
   return (
     <main className="flex-grow">
       <Head title="Home" />
@@ -18,12 +26,22 @@ export default function Welcome() {
           <div className="w-full max-w-2xl bg-surface p-2 rounded-xl shadow-lg flex flex-col sm:flex-row gap-2 border border-surface-border">
             <div className="flex-grow flex items-center bg-surface-container-lowest rounded-DEFAULT border border-surface-border px-4 py-3 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
               <span className="material-symbols-outlined text-primary mr-3">box</span>
-              <input className="w-full bg-transparent border-none p-0 focus:ring-0 font-label-md text-label-md text-on-surface placeholder-on-surface-variant outline-none" placeholder="Enter Tracking Number (e.g., GM-847291)" type="text" />
+              <input
+                className="w-full bg-transparent border-none p-0 focus:ring-0 font-label-md text-label-md text-on-surface placeholder-on-surface-variant outline-none"
+                placeholder="Enter Tracking Number (e.g., GM-847291)"
+                type="text"
+                value={trackingNumber}
+                onChange={(e) => setTrackingNumber(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleTrack()}
+              />
             </div>
-            <Link href="/tracking" className="bg-secondary text-on-secondary font-label-md text-label-md px-8 py-3 rounded-DEFAULT hover:bg-secondary-container transition-colors flex items-center justify-center gap-2 whitespace-nowrap active:scale-95 shadow-sm">
+            <button
+              onClick={handleTrack}
+              className="bg-secondary text-on-secondary font-label-md text-label-md px-8 py-3 rounded-DEFAULT hover:bg-secondary-container transition-colors flex items-center justify-center gap-2 whitespace-nowrap active:scale-95 shadow-sm"
+            >
               <span>Track Shipment</span>
               <span className="material-symbols-outlined text-sm">arrow_forward</span>
-            </Link>
+            </button>
           </div>
           <div className="flex gap-4 mt-4">
             <button className="bg-primary-container text-on-primary-container border border-on-primary-container/30 font-label-md text-label-md px-6 py-2 rounded-DEFAULT hover:bg-primary transition-colors active:scale-95 backdrop-blur-sm">Get a Quote</button>
