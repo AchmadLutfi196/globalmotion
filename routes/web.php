@@ -2,10 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Public\TrackingController;
+
 Route::inertia('/', 'welcome')->name('home');
 Route::inertia('/about', 'about')->name('about');
 Route::inertia('/services', 'services')->name('services');
-Route::inertia('/tracking', 'tracking')->name('tracking');
+Route::get('/tracking', [TrackingController::class, 'index'])->name('tracking');
+Route::get('/tracking/{tracking_number}', [TrackingController::class, 'show'])->name('tracking.show');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
