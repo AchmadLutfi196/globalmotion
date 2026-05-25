@@ -1,0 +1,6 @@
+{
+  "name": "Global Motion",
+  "description": "Engineered for Global Motion. Precision logistics, global scale.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
