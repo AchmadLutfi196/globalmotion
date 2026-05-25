@@ -18,7 +18,7 @@ class PricingController extends Controller
     {
         $pricingConfigs = PricingConfig::all();
 
-        return Inertia::render('Admin/Pricing/Index', [
+        return Inertia::render('admin/pricing/index', [
             'pricingConfigs' => $pricingConfigs,
         ]);
     }

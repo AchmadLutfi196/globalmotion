@@ -12,6 +12,9 @@ Route::get('/tracking/{tracking_number}', [TrackingController::class, 'show'])->
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
+    Route::get('/admin/dashboard', function () {
+        return Inertia::render('admin/dashboard');
+    })->name('admin.dashboard');
 });
 
 require __DIR__.'/settings.php';

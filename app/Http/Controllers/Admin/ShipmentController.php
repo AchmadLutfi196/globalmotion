@@ -26,7 +26,7 @@ class ShipmentController extends Controller
     {
         $shipments = Shipment::latest()->paginate(10);
 
-        return Inertia::render('Admin/Shipments/Index', [
+        return Inertia::render('admin/shipments/index', [
             'shipments' => $shipments,
         ]);
     }
@@ -38,7 +38,7 @@ class ShipmentController extends Controller
     {
         $pricingConfigs = PricingConfig::all();
 
-        return Inertia::render('Admin/Shipments/Create', [
+        return Inertia::render('admin/shipments/create', [
             'pricingConfigs' => $pricingConfigs,
         ]);
     }
@@ -85,7 +85,7 @@ class ShipmentController extends Controller
      */
     public function show(Shipment $shipment): Response
     {
-        return Inertia::render('Admin/Shipments/Show', [
+        return Inertia::render('admin/shipments/show', [
             'shipment' => $shipment->load('events'),
         ]);
     }
