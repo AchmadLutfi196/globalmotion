@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreShipmentRequest;
+use App\Http\Requests\Admin\UpdateShipmentStatusRequest;
 use App\Models\PricingConfig;
 use App\Models\Shipment;
 use App\Models\ShipmentEvent;
@@ -87,5 +88,27 @@ class ShipmentController extends Controller
         return Inertia::render('Admin/Shipments/Show', [
             'shipment' => $shipment->load('events'),
         ]);
+    }
+
+    /**
+     * Update the shipment status and add a new event.
+     */
+    public function updateStatus(UpdateShipmentStatusRequest $request, Shipment $shipment): RedirectResponse
+    {
+        $validated = $request->validated();
+
+        $shipment->update([
+            'status' => $validated['status'],
+        ]);
+
+        $shipment->events()->create([
+            'location' => $validated['location'],
+            'status' => $validated['status'],
+            'description' => $validated['description'] ?? "Shipment status updated to {$validated['status']}",
+            'timestamp' => $validated['timestamp'],
+        ]);
+
+        return redirect()->back()
+            ->with('success', 'Shipment status updated successfully.');
     }
 }
