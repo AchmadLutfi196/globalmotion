@@ -1,6 +1,6 @@
 import MainLayout from '@/layouts/MainLayout';
 import { ReactNode } from 'react';
-import { Head, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 
 export default function AboutPage() {
   return (
