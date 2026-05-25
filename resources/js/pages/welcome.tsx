@@ -1,4 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
+import { ReactNode } from 'react';
 import MainLayout from '@/layouts/MainLayout';
 
 export default function Welcome() {
@@ -201,4 +202,4 @@ export default function Welcome() {
   );
 }
 
-Welcome.layout = (page: React.ReactNode) => <MainLayout>{page}</MainLayout>;
+Welcome.layout = (page: ReactNode) => <MainLayout>{page}</MainLayout>;
