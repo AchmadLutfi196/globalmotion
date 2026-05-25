@@ -3,9 +3,10 @@ import AppLayout from '@/layouts/app-layout';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import admin from '@/routes/admin';
+import { UpdateStatusModal } from './update-status-modal';
 
 interface Shipment {
-    id: number;
+    id: string;
     tracking_number: string;
     service_type: string;
     origin: string;
@@ -43,12 +44,13 @@ export default function ShipmentIndex({ shipments }: Props) {
                                 <th className="h-12 px-4 text-left font-medium">Koli</th>
                                 <th className="h-12 px-4 text-left font-medium">Price</th>
                                 <th className="h-12 px-4 text-left font-medium">Status</th>
+                                <th className="h-12 px-4 text-right font-medium">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {shipments.length === 0 ? (
                                 <tr className="border-b transition-colors hover:bg-muted/50">
-                                    <td colSpan={7} className="h-24 text-center align-middle text-muted-foreground">
+                                    <td colSpan={8} className="h-24 text-center align-middle text-muted-foreground">
                                         No shipments found.
                                     </td>
                                 </tr>
@@ -69,6 +71,13 @@ export default function ShipmentIndex({ shipments }: Props) {
                                             <Badge variant="secondary" className="capitalize">
                                                 {shipment.status.replace('_', ' ')}
                                             </Badge>
+                                        </td>
+                                        <td className="p-4 text-right">
+                                            <UpdateStatusModal
+                                                shipmentId={shipment.id}
+                                                trackingNumber={shipment.tracking_number}
+                                                currentStatus={shipment.status}
+                                            />
                                         </td>
                                     </tr>
                                 ))
