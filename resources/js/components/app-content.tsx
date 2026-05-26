@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { SidebarInset } from '@/components/ui/sidebar';
 import type { AppVariant } from '@/types';
 
 type Props = React.ComponentProps<'main'> & {
@@ -8,7 +7,12 @@ type Props = React.ComponentProps<'main'> & {
 
 export function AppContent({ variant = 'sidebar', children, ...props }: Props) {
     if (variant === 'sidebar') {
-        return <SidebarInset {...props}>{children}</SidebarInset>;
+        // Simple main wrapper without SidebarInset
+        return (
+            <main className="flex-1" {...props}>
+                {children}
+            </main>
+        );
     }
 
     return (

@@ -18,12 +18,12 @@ test('authenticated admin can update shipment status', function () {
         'weight' => 2,
         'koli' => 1,
         'total_price' => 20000,
-        'status' => 'Pending',
+        'status' => 'pending',
     ]);
 
     $response = $this->actingAs($user)
         ->post(route('admin.shipments.update-status', $shipment), [
-            'status' => 'Picked Up',
+            'status' => 'picked_up',
             'location' => 'Jakarta Warehouse',
             'timestamp' => now()->toDateTimeString(),
             'description' => 'Shipment has been picked up by the courier',
@@ -32,11 +32,11 @@ test('authenticated admin can update shipment status', function () {
     $response->assertRedirect();
     $this->assertDatabaseHas('shipments', [
         'id' => $shipment->id,
-        'status' => 'Picked Up',
+        'status' => 'picked_up',
     ]);
     $this->assertDatabaseHas('shipment_events', [
         'shipment_id' => $shipment->id,
-        'status' => 'Picked Up',
+        'status' => 'picked_up',
         'location' => 'Jakarta Warehouse',
     ]);
 });
@@ -50,11 +50,11 @@ test('unauthenticated user cannot update shipment status', function () {
         'weight' => 2,
         'koli' => 1,
         'total_price' => 20000,
-        'status' => 'Pending',
+        'status' => 'pending',
     ]);
 
     $response = $this->post(route('admin.shipments.update-status', $shipment), [
-        'status' => 'Picked Up',
+        'status' => 'picked_up',
         'location' => 'Jakarta Warehouse',
         'timestamp' => now()->toDateTimeString(),
     ]);
@@ -72,7 +72,7 @@ test('validation errors for shipment status update', function () {
         'weight' => 2,
         'koli' => 1,
         'total_price' => 20000,
-        'status' => 'Pending',
+        'status' => 'pending',
     ]);
 
     $response = $this->actingAs($user)

@@ -16,7 +16,7 @@ class UpdateShipmentStatusRequest extends FormRequest
     {
         return [
             'status' => ['required', 'string', Rule::in([
-                'Pending', 'Picked Up', 'In Transit', 'Arrived at Hub', 'Out for Delivery', 'Delivered', 'Cancelled'
+                'pending', 'picked_up', 'in_transit', 'arrived_at_hub', 'out_for_delivery', 'delivered', 'cancelled'
             ])],
             'location' => ['required', 'string', 'max:255'],
             'timestamp' => ['required', 'date'],

@@ -56,25 +56,24 @@ export default function TwoFactorChallenge() {
             <div className="space-y-6">
                 <Form
                     {...store.form()}
-                    className="space-y-4"
+                    className="space-y-5"
                     resetOnError
                     resetOnSuccess={!showRecoveryInput}
                 >
                     {({ errors, processing, clearErrors }) => (
                         <>
                             {showRecoveryInput ? (
-                                <>
+                                <div className="grid gap-2.5">
                                     <Input
                                         name="recovery_code"
                                         type="text"
                                         placeholder="Enter recovery code"
                                         autoFocus={showRecoveryInput}
                                         required
+                                        className="transition-all duration-200 hover:border-slate-400 dark:hover:border-slate-600"
                                     />
-                                    <InputError
-                                        message={errors.recovery_code}
-                                    />
-                                </>
+                                    <InputError message={errors.recovery_code} />
+                                </div>
                             ) : (
                                 <div className="flex flex-col items-center justify-center space-y-3 text-center">
                                     <div className="flex w-full items-center justify-center">
@@ -106,20 +105,29 @@ export default function TwoFactorChallenge() {
 
                             <Button
                                 type="submit"
-                                className="w-full"
+                                className="h-11 w-full cursor-pointer text-base font-semibold shadow-sm transition-all duration-200 hover:shadow-md"
                                 disabled={processing}
                             >
-                                Continue
+                                {processing ? 'Verifying...' : 'Continue'}
                             </Button>
 
-                            <div className="text-center text-sm text-muted-foreground">
-                                <span>or you can </span>
+                            <div className="relative">
+                                <div className="absolute inset-0 flex items-center">
+                                    <div className="w-full border-t border-slate-200 dark:border-slate-800" />
+                                </div>
+                                <div className="relative flex justify-center text-xs uppercase">
+                                    <span className="bg-white px-2 text-slate-500 dark:bg-slate-900 dark:text-slate-400">
+                                        Or
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div className="text-center text-sm text-slate-600 dark:text-slate-400">
+                                <span>You can also </span>
                                 <button
                                     type="button"
-                                    className="cursor-pointer text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out hover:decoration-current! dark:decoration-neutral-500"
-                                    onClick={() =>
-                                        toggleRecoveryMode(clearErrors)
-                                    }
+                                    className="cursor-pointer font-semibold text-slate-900 transition-colors duration-200 hover:text-slate-700 dark:text-slate-100 dark:hover:text-slate-300"
+                                    onClick={() => toggleRecoveryMode(clearErrors)}
                                 >
                                     {authConfigContent.toggleText}
                                 </button>
