@@ -116,7 +116,7 @@ export default function Welcome() {
       </section>
 
       {/* Why Choose Us (Stats Section) */}
-      <section className="py-margin-desktop bg-ocean-dark text-on-primary">
+      <section className="py-margin-desktop bg-oceanic-dark text-on-primary">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -128,19 +128,19 @@ export default function Welcome() {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-surface-container-lowest/10 border border-surface-tint/30 p-6 rounded-lg backdrop-blur-sm flex flex-col justify-center">
+              <div className="bg-white/10 border border-white/20 p-6 rounded-lg backdrop-blur-sm flex flex-col justify-center">
                 <div className="font-display-lg text-display-lg text-white mb-1">99.8%</div>
                 <div className="font-label-md text-label-md text-primary-fixed-dim uppercase tracking-wider">On-Time Delivery</div>
               </div>
-              <div className="bg-surface-container-lowest/10 border border-surface-tint/30 p-6 rounded-lg backdrop-blur-sm flex flex-col justify-center">
+              <div className="bg-white/10 border border-white/20 p-6 rounded-lg backdrop-blur-sm flex flex-col justify-center">
                 <div className="font-display-lg text-display-lg text-white mb-1">200+</div>
                 <div className="font-label-md text-label-md text-primary-fixed-dim uppercase tracking-wider">Countries Served</div>
               </div>
-              <div className="bg-surface-container-lowest/10 border border-surface-tint/30 p-6 rounded-lg backdrop-blur-sm flex flex-col justify-center">
+              <div className="bg-white/10 border border-white/20 p-6 rounded-lg backdrop-blur-sm flex flex-col justify-center">
                 <div className="font-display-lg text-display-lg text-white mb-1">15k</div>
                 <div className="font-label-md text-label-md text-primary-fixed-dim uppercase tracking-wider">Active Fleets</div>
               </div>
-              <div className="bg-surface-container-lowest/10 border border-surface-tint/30 p-6 rounded-lg backdrop-blur-sm flex flex-col justify-center">
+              <div className="bg-white/10 border border-white/20 p-6 rounded-lg backdrop-blur-sm flex flex-col justify-center">
                 <div className="font-display-lg text-display-lg text-white mb-1">24/7</div>
                 <div className="font-label-md text-label-md text-primary-fixed-dim uppercase tracking-wider">Global Support</div>
               </div>
