@@ -15,6 +15,7 @@ class ShipmentEvent extends Model
         'location',
         'status',
         'description',
+        'photo',
         'timestamp',
     ];
 

@@ -148,6 +148,80 @@
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(0.269 0 0);
     --sidebar-ring: oklch(0.439 0 0);
+
+    /* ── Global Motion dark tokens ── */
+
+    /* Surface scale — dark navy hierarchy */
+    --color-surface:                    #0d1117;
+    --color-surface-dim:                #090d12;
+    --color-surface-bright:             #1a2332;
+    --color-surface-container-lowest:   #0a0f16;
+    --color-surface-container-low:      #111827;
+    --color-surface-container:          #1a2332;
+    --color-surface-container-high:     #1e2a3a;
+    --color-surface-container-highest:  #243040;
+    --color-surface-variant:            #1e2a3a;
+    --color-surface-border:             #2d3f55;
+    --color-background:                 #0d1117;
+
+    /* On-surface text */
+    --color-on-surface:                 #e2e8f0;
+    --color-on-surface-variant:         #94a3b8;
+    --color-on-background:              #e2e8f0;
+    --color-inverse-surface:            #e2e8f0;
+    --color-inverse-on-surface:         #0d1117;
+
+    /* Outline */
+    --color-outline:                    #4a5568;
+    --color-outline-variant:            #2d3f55;
+
+    /* Primary — lighter blue for dark bg */
+    --color-primary:                    #abc9f2;
+    --color-on-primary:                 #001c38;
+    --color-primary-container:          #2b486b;
+    --color-on-primary-container:       #d2e4ff;
+    --color-inverse-primary:            #002444;
+    --color-surface-tint:               #abc9f2;
+
+    /* Secondary — lighter red */
+    --color-secondary:                  #ffb4aa;
+    --color-on-secondary:               #690003;
+    --color-secondary-container:        #930007;
+    --color-on-secondary-container:     #ffdad5;
+
+    /* Tertiary */
+    --color-tertiary:                   #f1c100;
+    --color-on-tertiary:                #3d2f00;
+    --color-tertiary-container:         #584400;
+    --color-on-tertiary-container:      #ffe08b;
+
+    /* Error */
+    --color-error:                      #ffb4ab;
+    --color-on-error:                   #690005;
+    --color-error-container:            #93000a;
+    --color-on-error-container:         #ffdad6;
+
+    /* Fixed tones (unchanged) */
+    --color-primary-fixed:              #d2e4ff;
+    --color-primary-fixed-dim:          #abc9f2;
+    --color-on-primary-fixed:           #001c38;
+    --color-on-primary-fixed-variant:   #2b486b;
+    --color-secondary-fixed:            #ffdad5;
+    --color-secondary-fixed-dim:        #ffb4aa;
+    --color-on-secondary-fixed:         #410001;
+    --color-on-secondary-fixed-variant: #930007;
+    --color-tertiary-fixed:             #ffe08b;
+    --color-tertiary-fixed-dim:         #f1c100;
+    --color-on-tertiary-fixed:          #241a00;
+    --color-on-tertiary-fixed-variant:  #584400;
+
+    /* Status */
+    --color-status-success:             #34d399;
+    --color-status-warning:             #fbbf24;
+    --color-status-error:               #f87171;
+
+    /* Oceanic */
+    --color-oceanic-dark:               #0a1628;
 }
 
 @layer base {
@@ -289,6 +363,16 @@
   background-image: linear-gradient(to right, #E2E8F0 1px, transparent 1px),
                     linear-gradient(to bottom, #E2E8F0 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+/* Dark mode overrides for custom utilities */
+.dark .glass-panel {
+  background: rgba(26, 35, 50, 0.85);
+  border-color: rgba(45, 63, 85, 0.5);
+}
+.dark .bg-grid-pattern {
+  background-image: linear-gradient(to right, #2d3f55 1px, transparent 1px),
+                    linear-gradient(to bottom, #2d3f55 1px, transparent 1px);
 }
 
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }

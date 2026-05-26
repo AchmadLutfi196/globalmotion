@@ -1,9 +1,9 @@
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import { logout } from '@/routes';
-import profileIndex from '@/routes/profile';
-import securityIndex from '@/routes/security';
-import appearanceIndex from '@/routes/appearance';
+import { edit as profileEdit } from '@/routes/profile';
+import { edit as securityEdit } from '@/routes/security';
+import { edit as appearanceEdit } from '@/routes/appearance';
 
 export function NavUser() {
     const { auth } = usePage().props;
@@ -51,8 +51,8 @@ export function NavUser() {
                         className="fixed inset-0 z-40"
                         onClick={() => setIsOpen(false)}
                     />
-                    <div className="absolute bottom-full left-0 right-0 mb-2 z-50 rounded-xl bg-white shadow-xl border border-surface-border overflow-hidden">
-                        <div className="p-3 border-b border-surface-border bg-surface-container-lowest">
+                    <div className="absolute bottom-full left-0 right-0 mb-2 z-50 rounded-xl bg-surface-container-lowest shadow-xl border border-surface-border overflow-hidden">
+                        <div className="p-3 border-b border-surface-border bg-surface-container-low">
                             <p className="font-label-md text-label-md text-primary font-semibold">
                                 {auth.user.name}
                             </p>
@@ -62,7 +62,7 @@ export function NavUser() {
                         </div>
                         <div className="p-2">
                             <Link
-                                href={profileIndex()}
+                                href={profileEdit()}
                                 className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-surface-container transition-colors group"
                                 onClick={() => setIsOpen(false)}
                             >
@@ -74,7 +74,7 @@ export function NavUser() {
                                 </span>
                             </Link>
                             <Link
-                                href={securityIndex()}
+                                href={securityEdit()}
                                 className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-surface-container transition-colors group"
                                 onClick={() => setIsOpen(false)}
                             >
@@ -86,7 +86,7 @@ export function NavUser() {
                                 </span>
                             </Link>
                             <Link
-                                href={appearanceIndex()}
+                                href={appearanceEdit()}
                                 className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-surface-container transition-colors group"
                                 onClick={() => setIsOpen(false)}
                             >

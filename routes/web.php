@@ -10,17 +10,15 @@ Route::inertia('/services', 'services')->name('services');
 Route::get('/tracking', [TrackingController::class, 'index'])->name('tracking');
 Route::get('/tracking/{tracking_number}', [TrackingController::class, 'show'])->name('tracking.show');
 
+use App\Http\Controllers\Admin\ShipmentController;
+use App\Http\Controllers\Admin\PricingController;
+
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::inertia('dashboard', 'dashboard')->name('dashboard');
-    Route::get('/admin/dashboard', function () {
-        return Inertia::render('admin/dashboard');
-    })->name('admin.dashboard');
+    Route::redirect('dashboard', '/admin/dashboard')->name('dashboard');
+    Route::get('/admin/dashboard', [ShipmentController::class, 'dashboard'])->name('admin.dashboard');
 });
 
 require __DIR__.'/settings.php';
-
-use App\Http\Controllers\Admin\ShipmentController;
-use App\Http\Controllers\Admin\PricingController;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/shipments', [ShipmentController::class, 'index'])->name('shipments.index');

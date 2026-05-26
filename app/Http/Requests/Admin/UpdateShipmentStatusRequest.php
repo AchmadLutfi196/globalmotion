@@ -15,12 +15,14 @@ class UpdateShipmentStatusRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'status' => ['required', 'string', Rule::in([
-                'pending', 'picked_up', 'in_transit', 'arrived_at_hub', 'out_for_delivery', 'delivered', 'cancelled'
+            'status'      => ['required', 'string', Rule::in([
+                'pending', 'picked_up', 'in_transit', 'arrived_at_hub',
+                'out_for_delivery', 'delivered', 'cancelled',
             ])],
-            'location' => ['required', 'string', 'max:255'],
-            'timestamp' => ['required', 'date'],
+            'location'    => ['required', 'string', 'max:255'],
+            'timestamp'   => ['required', 'date'],
             'description' => ['nullable', 'string', 'max:1000'],
+            'photo'       => ['nullable', 'image', 'max:2048'], // max 2MB
         ];
     }
 }
